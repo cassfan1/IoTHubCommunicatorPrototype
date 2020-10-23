@@ -8,7 +8,7 @@ namespace IoTHubCommunicatorPrototype
 {
   class Program
   {
-    private const string DeviceConnectionString = "HostName=connect-iothub-dev.azure-devices.net;DeviceId=dps-iot-demo-001;SharedAccessKey=e0d8a09604016ddce6d56724b8ec955d41d10f1f496399007172e3388123ec0f";
+    private const string DeviceConnectionString = "";
 
     static async Task Main(string[] args)
     {
@@ -36,11 +36,6 @@ namespace IoTHubCommunicatorPrototype
         await Task.Delay(1000);
       }
     }
-
-    #endregion
-
-    #region Monitor twins
-
 
     #endregion
   }
