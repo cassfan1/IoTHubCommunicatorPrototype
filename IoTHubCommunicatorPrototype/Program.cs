@@ -12,7 +12,9 @@ namespace IoTHubCommunicatorPrototype
 
     static async Task Main(string[] args)
     {
-      await CommunicateToIoTHubAsync();
+      await CheckDeviceConnectivityAsync();
+      
+      //await CommunicateToIoTHubAsync();
     }
 
     #region Communicate to IoTHub
@@ -34,6 +36,25 @@ namespace IoTHubCommunicatorPrototype
         Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
 
         await Task.Delay(1000);
+      }
+    }
+
+    #endregion
+
+    #region Check device connectivity
+
+    private static async Task CheckDeviceConnectivityAsync()
+    {
+      var deviceClient = DeviceClient.CreateFromConnectionString(DeviceConnectionString);
+      try
+      {
+        await deviceClient.OpenAsync();
+        await deviceClient.CloseAsync();
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine(e);
+        throw;
       }
     }
 
